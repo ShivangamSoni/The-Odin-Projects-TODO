@@ -1,0 +1,46 @@
+@import "../../mixins";
+
+.main {
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: var(--section-shadow);
+    padding: 10px;
+
+    .title {
+      color: var(--text-dark);
+    }
+
+    .btn {
+      @include commonButton;
+
+      align-self: center;
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      aspect-ratio: 1/1;
+      padding: 0;
+      background-color: var(--white);
+      color: var(--text-light);
+
+      & > svg {
+        transition: color 350ms linear;
+        fill: currentColor;
+      }
+
+      &:hover {
+        background-color: var(--white);
+        color: var(--secondary-color);
+      }
+    }
+  }
+}

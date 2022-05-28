@@ -1,6 +1,7 @@
 import UI from "./UI";
 import Project from "./Model/Project";
 import ProjectsList from "./Model/ProjectList";
+import Todo from "./Model/Todo";
 
 class Controller {
   static #defaultProjects;
@@ -8,10 +9,11 @@ class Controller {
 
   static init(root, modalRoot) {
     Controller.#defaultProjects = new ProjectsList();
-    console.log(Controller.#defaultProjects);
     Controller.#defaultProjects.addProject(new Project({ title: "My TODOs" }));
-    Controller.#defaultProjects.addProject(new Project({ title: "Today" }));
-    Controller.#defaultProjects.addProject(new Project({ title: "This Week" }));
+
+    Controller.#defaultProjects.projects[0].addTodo(new Todo({ title: "My Todo", description: "My Test 1", dueDate: Date.now(), priority: Todo.PRIORITIES.IMPORTANT }));
+    Controller.#defaultProjects.projects[0].addTodo(new Todo({ title: "My Todo", description: "My Test 2", dueDate: Date.now(), priority: Todo.PRIORITIES.IMPORTANT }));
+    Controller.#defaultProjects.projects[0].addTodo(new Todo({ title: "My Todo", description: "My Test 3", dueDate: Date.now(), priority: Todo.PRIORITIES.IMPORTANT }));
 
     Controller.#userProjects = new ProjectsList();
     Controller.#userProjects.addProject(new Project({ title: "My Notes" }));
@@ -20,7 +22,6 @@ class Controller {
   }
 
   static get defaultProjects() {
-    console.log("Get Projects Default");
     return Controller.#defaultProjects;
   }
 
@@ -34,6 +35,30 @@ class Controller {
 
   static set userProjects(projects) {
     Controller.#userProjects = projects;
+  }
+
+  static getProjectById(id) {
+    let idProject = null;
+
+    for (const project of Controller.#defaultProjects.projects) {
+      if (project.id === id) {
+        idProject = project;
+        break;
+      }
+    }
+
+    if (idProject !== null) {
+      return idProject;
+    }
+
+    for (const project of Controller.#userProjects.projects) {
+      if (project.id === id) {
+        idProject = project;
+        break;
+      }
+    }
+
+    return idProject;
   }
 
   static addUserProject(title) {

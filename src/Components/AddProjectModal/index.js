@@ -17,6 +17,9 @@ const AddProjectModal = () => {
   input.type = "text";
   input.placeholder = "Project Title";
   input.required = true;
+  input.addEventListener("keydown", (e) => {
+    error.textContent = "";
+  });
 
   const label = document.createElement("span");
   label.classList.add(styles.label);

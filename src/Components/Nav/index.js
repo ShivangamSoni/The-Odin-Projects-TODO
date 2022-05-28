@@ -21,6 +21,7 @@ const Nav = (projects, navTitle) => {
     const addButton = document.createElement("button");
     addButton.classList.add(styles.btn);
     addButton.innerHTML = addIcon;
+    addButton.title = "Add Project";
 
     addButton.addEventListener("click", UI.openAddProjectModal);
 
@@ -50,6 +51,7 @@ const Nav = (projects, navTitle) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       UI.activeMenuItem = id;
+      UI.openTab = { type: "list", id };
     });
 
     if (navTitle) {

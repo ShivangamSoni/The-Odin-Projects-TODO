@@ -4,6 +4,7 @@
   background-color: var(--white);
   box-shadow: var(--section-shadow);
   isolation: isolate;
+  z-index: 1;
   width: fit-content;
   max-width: 200px;
   overflow: hidden;

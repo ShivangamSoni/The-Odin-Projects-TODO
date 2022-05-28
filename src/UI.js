@@ -29,7 +29,6 @@ class UI {
 
   static set activeMenuItem(item) {
     UI.#activeMenuItem = item;
-    UI.render();
   }
 
   static get activeMenuItem() {
@@ -38,6 +37,11 @@ class UI {
 
   static get isMenuOpen() {
     return UI.#isMenuOpen;
+  }
+
+  static set openTab({ type = "create", id = null }) {
+    UI.#openTab = { type, id };
+    UI.render();
   }
 
   static get openTab() {
