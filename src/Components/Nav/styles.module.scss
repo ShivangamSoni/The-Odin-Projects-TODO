@@ -1,0 +1,93 @@
+@import "../../mixins";
+
+.nav {
+  margin-top: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+  overflow-y: auto;
+
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: var(--text-light);
+    padding: 0 5px;
+    border-top: 2px solid var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+
+    .btn {
+      appearance: none;
+      outline: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background-color: transparent;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      color: var(--text-light);
+
+      &:hover {
+        color: var(--secondary-color);
+      }
+
+      & > svg {
+        fill: currentColor;
+      }
+    }
+  }
+
+  .link {
+    display: grid;
+    grid-template-columns: 85% auto;
+    grid-template-rows: 1fr;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: hsla(0, 100%, 0%, 0.5);
+    padding: 10px 10px 10px 5px;
+    position: relative;
+    transition: color 250ms linear;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &.active {
+      color: var(--secondary-color);
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    & > .linkText {
+      word-wrap: anywhere;
+      max-width: 75%;
+      align-self: center;
+    }
+
+    & > .deleteBtn {
+      @include commonButton;
+
+      align-self: center;
+      justify-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      background-color: var(--white);
+      color: var(--text-light);
+
+      & > svg {
+        fill: currentColor;
+      }
+
+      &:hover {
+        background-color: var(--white);
+        color: var(--text-error);
+      }
+    }
+  }
+}

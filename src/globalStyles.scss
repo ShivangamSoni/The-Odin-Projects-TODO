@@ -1,0 +1,73 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  /* Smooth Scrollbar For Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #333;
+  scroll-behavior: smooth;
+}
+
+/* Smooth Scroll Bar Style For Chromium Based Browsers */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #333;
+  border-radius: 20px;
+  outline: 1px solid black;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 20px;
+}
+
+/* Site Level Variables */
+:root {
+  --primary-color: rgb(33, 150, 243);
+  --secondary-color: rgb(76, 175, 80);
+  --white: #fff;
+  --background: #f9f9f9;
+  --text-dark: rgba(0, 0, 0, 0.87);
+  --text-light: rgba(0, 0, 0, 0.54);
+  --text-error: #cc0000;
+  --grey: #ccc;
+  --box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  --box-shadow-hover: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  --section-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  background-color: var(--background);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text-light);
+
+  &.open {
+    display: block;
+  }
+}

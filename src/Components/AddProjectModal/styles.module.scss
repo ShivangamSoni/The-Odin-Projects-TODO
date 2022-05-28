@@ -1,0 +1,82 @@
+@import "../../mixins";
+
+.addProject {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
+  box-shadow: var(--box-shadow-hover);
+  padding: 20px;
+  width: MIN(350px, 98%);
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+
+  .title {
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .formControl {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 5px;
+    position: relative;
+
+    & > .label {
+      font-size: 0.8rem;
+      text-transform: capitalize;
+      color: var(--text-light);
+      background-color: var(--white);
+      position: absolute;
+      top: 50%;
+      left: 2%;
+      transform: translateY(-50%);
+      transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    & > input {
+      appearance: none;
+      outline: none;
+      background-color: var(--white);
+      border: 1px solid var(--text-light);
+      border-radius: 3px;
+      padding: 0.3rem 0.5rem;
+      font-size: 1rem;
+
+      &:focus,
+      &:not(:placeholder-shown) {
+        & + .label {
+          transform: translateY(-152%);
+        }
+      }
+
+      &::placeholder {
+        font-size: 0;
+      }
+
+      &:focus {
+        border-color: var(--primary-color);
+      }
+    }
+
+    & > .error {
+      position: absolute;
+      top: 100%;
+      left: 2%;
+      transform: translateY(-50%);
+      font-size: 0.7rem;
+      text-transform: capitalize;
+      background-color: var(--white);
+      color: var(--text-error);
+      padding-right: 3px;
+    }
+  }
+
+  .btn {
+    @include commonButton;
+    width: MIN(150px, 100%);
+  }
+}
